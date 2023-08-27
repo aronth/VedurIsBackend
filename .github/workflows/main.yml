@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./nameoftheproject/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USER}}/VedurIsBackend:latest
+          tags: ${{ secrets.DOCKER_USER}}/vedur_backend:latest
