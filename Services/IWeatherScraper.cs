@@ -2,5 +2,6 @@ using WeatherService.Domain;
 
 public interface IWeatherScraper
 {
-    Task<Weather> GetWeatherFromStation(int stationId);
+    Task<ForecastResult> GetWeatherFromStationAsync(WeatherStations station);
+    Task<ForecastResult> GetWeatherFromStationAsync(int stationId);
 }

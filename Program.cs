@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<WeatherContext>(options => options.UseSqlite("Data Source=weather.sqlite"));
 
 builder.Services.AddScoped<IWeatherScraper, WeatherScraper>();
 
@@ -15,7 +19,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(opt =>
+    {
+        opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API");
+        opt.EnableTryItOutByDefault();
+    });
 }
 
 app.UseHttpsRedirection();
